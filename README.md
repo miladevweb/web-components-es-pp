@@ -16,8 +16,6 @@ Los Web Components tienen algunos métodos por defecto que puedes usar para mane
 
 **_adoptedCallback():_** Se invoca cuando el componente es movido a un nuevo documento (por ejemplo, si se mueve entre iframes).
 
-<br>
-
 > ## Example:
 
 <details>
@@ -115,8 +113,6 @@ customElements.define('tiktok-video', TiktokVideo)
 ```
 
 </details>
-
-<br>
 
 > ## Example with all the methods:
 
