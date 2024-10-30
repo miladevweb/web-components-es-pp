@@ -115,3 +115,60 @@ customElements.define('tiktok-video', TiktokVideo)
 ```
 
 </details>
+
+<br>
+
+> ## Example with all the methods:
+
+<details>
+  <summary>HTML</summary>
+
+```html
+<mi-componente data-mensaje="¡Hola, mundo!"></mi-componente>
+```
+
+</details>
+
+<details>
+  <summary>TypeScript</summary>
+
+```ts
+class MiComponente extends HTMLElement {
+  private contenedor: HTMLDivElement
+
+  static get observedAttributes(): string[] {
+    return ['data-mensaje']
+  }
+
+  constructor() {
+    super()
+    this.attachShadow({ mode: 'open' })
+    this.contenedor = document.createElement('div')
+    this.shadowRoot?.appendChild(this.contenedor)
+  }
+
+  connectedCallback() {
+    this.actualizarContenido()
+  }
+
+  disconnectedCallback() {
+    console.log('Componente eliminado del DOM')
+  }
+
+  attributeChangedCallback(attrName: string, oldValue: string | null, newValue: string | null) {
+    if (attrName === 'data-mensaje') {
+      this.actualizarContenido()
+    }
+  }
+
+  private actualizarContenido() {
+    const mensaje = this.getAttribute('data-mensaje') || '¡Hola desde mi Web Component!'
+    this.contenedor.textContent = mensaje
+  }
+}
+
+// Definición del nuevo elemento
+customElements.define('mi-componente', MiComponente)
+```
+
+</details>
